@@ -39,25 +39,11 @@
         А как обращаться к вам?
     </p>
 </div>
-<form action="action_form.php" method="POST">
-        <input type="text" name="firstname" value="">
-        <input type="submit" name="firstname" VALUE="Представиться">
+<!-- значит вот это внизу форма отправки имени пользователя по нажатию кнопки submit в сервлет loginServlet-->
+<form name="Player form" action="login" method="POST">
+        <input type="text" name="firstname" >
+        <input type="submit"  value="Представиться">
     </p>
 </form>
-
-<form action="action_form.php" method="POST">
-    <p> Тут должен быть текст вопроса</p>
-    <ol>
-        <li><input type="radio" name="age" value="18" checked>до 18 включительно</li>
-        <li><input type="radio" name="age" value="18-24">от 18 до 24</li>
-        <li><input type="radio" name="age" value="25-34">от 25 до 35</li>
-        <li><input type="radio" name="age" value="35-50">более 35</li>
-    </ol>
-    <input type="submit" name="submit" value="Ответить">
-</form>
-
-<button type="submit">Я кнопка отправки формы</button>
-
-
 
 </body>
