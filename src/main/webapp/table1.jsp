@@ -10,7 +10,18 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        table{
+            border-collapse: collapse;<%--одинарная рамка для таблицы--%>
+            width: 13%;<%--ширина таблицы--%>
+            height: 12%;<%--высота таблицы--%>
+        }
+        th, td {
+            border: 3px solid red;
+        }
+    </style>
 </head>
+<body>
 <form action="answer" method="POST">
 
     <label class="form-label">${question1}</label>
@@ -29,8 +40,20 @@
 <br>
 <br>
 <br>
-<h2>${playerName}</h2>
-<h2>${sessionNumber}</h2>
+<table>
+    <td>
+        <div style="line-height: 1 ">
+        <p>Статистика:
+            <br>
+            Имя в игре: <em>${playerName}</em>
+            <br>
+            Количество игр: <em>${sessionNumber}</em>
+        </p>
+
+        </div>
+    </td>
+</table>
+
 
 
 </body>
