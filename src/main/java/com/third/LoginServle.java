@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class LoginServle extends HttpServlet {
     int count =0;
     protected void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // в index.jsp была форма, которая направила post запрос на это сервлет. И из этого запроса мы вытащили
-        // переданное имя которое вводили в форму.
+        // РІ index.jsp Р±С‹Р»Р° С„РѕСЂРјР°, РєРѕС‚РѕСЂР°СЏ РЅР°РїСЂР°РІРёР»Р° post Р·Р°РїСЂРѕСЃ РЅР° СЌС‚Рѕ СЃРµСЂРІР»РµС‚. Р РёР· СЌС‚РѕРіРѕ Р·Р°РїСЂРѕСЃР° РјС‹ РІС‹С‚Р°С‰РёР»Рё
+        // РїРµСЂРµРґР°РЅРЅРѕРµ РёРјСЏ РєРѕС‚РѕСЂРѕРµ РІРІРѕРґРёР»Рё РІ С„РѕСЂРјСѓ.
         HttpSession curenSesion=request.getSession();
         String username = request.getParameter("firstname");
         if(username==""&& count<=3){
@@ -31,9 +31,9 @@ public class LoginServle extends HttpServlet {
         String serialNumberOfTheGameSession = player.getValue();
         curentSesion.setAttribute("playerName",playerName);
         curentSesion.setAttribute("sessionNumber",serialNumberOfTheGameSession);
-        response.sendRedirect("logic");//перенаправляет на сервлет LogicServlet
+        response.sendRedirect("logic");//РїРµСЂРµРЅР°РїСЂР°РІР»СЏРµС‚ РЅР° СЃРµСЂРІР»РµС‚ LogicServlet
 
-/*           всё это было  для проверки
+/*           РІСЃС‘ СЌС‚Рѕ Р±С‹Р»Рѕ  РґР»СЏ РїСЂРѕРІРµСЂРєРё
         // get response writer
         PrintWriter writer = response.getWriter();
         // build HTML code

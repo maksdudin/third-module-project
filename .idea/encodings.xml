@@ -3,11 +3,12 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="windows-1251" addBOMForNewFiles="with BOM">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/third/InitServlet.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/third/LoginServle.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/third/LoginServle.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/third/Player.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/third/Questions.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/third/RestartServlet.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/third/RestartServlet.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/questions.txt" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1251" />
   </component>
 </project>

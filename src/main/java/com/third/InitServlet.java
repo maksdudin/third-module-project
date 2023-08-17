@@ -15,9 +15,9 @@ public class InitServlet extends HttpServlet {
       protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession  curenSesion = request.getSession(true);
         Questions questions = new Questions();
-        curenSesion.setAttribute("quest",questions);// заносим в атрибут сеcсии treeMap со значениями
-        // пропертей в правильном порядке
-        //перенапрвление запроса   на страницу index.jsp через сервер
+        curenSesion.setAttribute("quest",questions);// Р·Р°РЅРѕСЃРёРј РІ Р°С‚СЂРёР±СѓС‚ СЃРµcСЃРёРё treeMap СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё
+        // РїСЂРѕРїРµСЂС‚РµР№ РІ РїСЂР°РІРёР»СЊРЅРѕРј РїРѕСЂСЏРґРєРµ
+        //РїРµСЂРµРЅР°РїСЂРІР»РµРЅРёРµ Р·Р°РїСЂРѕСЃР°   РЅР° СЃС‚СЂР°РЅРёС†Сѓ index.jsp С‡РµСЂРµР· СЃРµСЂРІРµСЂ
         getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

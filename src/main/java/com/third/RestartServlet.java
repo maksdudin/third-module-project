@@ -1,20 +1,17 @@
 package com.third;
-
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name="RestartServlet",value = "/restart")
+@WebServlet(name = "RestartServlet",value = "/restart")
 public class RestartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.getSession().invalidate();//удаляет из сессии все объекты
-        response.sendRedirect("/start");//перезапускает сервлет старт
-
+        request.getSession().invalidate();//СѓРґР°Р»СЏРµС‚ РёР· СЃРµСЃСЃРёРё РІСЃРµ РѕР±СЉРµРєС‚С‹
+        response.sendRedirect("/start");//РїРµСЂРµР·Р°РїСѓСЃРєР°РµС‚ СЃРµСЂРІР»РµС‚ СЃС‚Р°СЂС‚
     }
 }
-//После победы появится кнопка “Start again”. После клика по ней – поле полностью очистится, и игра начнется сначала.
-//основная логика написана в <script></script>   и body файла index2.jsp
+//РџРѕСЃР»Рµ РїРѕР±РµРґС‹ РїРѕСЏРІРёС‚СЃСЏ РєРЅРѕРїРєР° вЂњStart againвЂќ. РџРѕСЃР»Рµ РєР»РёРєР° РїРѕ РЅРµР№ вЂ“ РїРѕР»Рµ РїРѕР»РЅРѕСЃС‚СЊСЋ РѕС‡РёСЃС‚РёС‚СЃСЏ, Рё РёРіСЂР° РЅР°С‡РЅРµС‚СЃСЏ СЃРЅР°С‡Р°Р»Р°.
+//РѕСЃРЅРѕРІРЅР°СЏ Р»РѕРіРёРєР° РЅР°РїРёСЃР°РЅР° РІ <script></script>   Рё body С„Р°Р№Р»Р° index2.jsp

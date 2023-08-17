@@ -21,7 +21,7 @@ this.value = work(property);
 
 }catch (IOException e)
 {
-    System.out.println("неверный формат записей");
+    System.out.println("РЅРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ Р·Р°РїРёСЃРµР№");
 }
 try(FileOutputStream fout = new FileOutputStream("F:\\JavaRush\\third module project\\third module project\\src\\main" +
         "\\resources\\player.properties")){
@@ -45,7 +45,7 @@ try(FileOutputStream fout = new FileOutputStream("F:\\JavaRush\\third module pro
                 value=val.toString();
                 return value;
             }catch (NumberFormatException e){
-                System.out.println("Не верный формат записи значения");
+                System.out.println("РќРµ РІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ Р·Р°РїРёСЃРё Р·РЅР°С‡РµРЅРёСЏ");
             }
         }
      return count.toString();

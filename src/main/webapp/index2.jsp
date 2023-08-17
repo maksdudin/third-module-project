@@ -6,9 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
+    <title>Third</title>
     <link href="static/main.css" rel="stylesheet">
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
@@ -16,6 +17,7 @@
 <body>
 <script>
     function restart() {
+
         $.ajax({
             url: '/restart',
             type: 'POST',
@@ -37,11 +39,9 @@
 <br>
 <br>
 <br>
+<hr>
 
 
-<c:if test="true">
-    <h1>CROSSES WIN</h1>
-    <button onclick="restart()">Start again</button>
-</c:if>
+<button onclick="restart()">Start again</button> <!--кнопка не работает, хотя точно так же в прошлом проекте работала-->
 </body>
 </html>
