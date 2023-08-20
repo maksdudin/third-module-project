@@ -18,19 +18,30 @@ public class LoginServle extends HttpServlet {
         // переданное имя которое вводили в форму.
         HttpSession curenSesion=request.getSession();
         String username = request.getParameter("firstname");
+        //  если в форме отсутствует имя пользователя, то возвращаемся обратно к форме занесения имени 3 раза,
+        //  а потом пишем "проигрыш"
         if(username==""&& count<=3){
             count++;
-        getServletContext().getRequestDispatcher("/index1.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/table2.jsp").forward(request, response);
         }else if(count==4){
             curenSesion.setAttribute("badChoise","Well.. you lost");
-            getServletContext().getRequestDispatcher("/index2.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/table3.jsp").forward(request, response);
         }
-        Player player = new Player(username);
+        // заносим игрока, по факту только для того что бы хранить информацию о нём
+
+        Player player = Player.setPlayer(username);
+
+        // выызваем текущую сессию
         HttpSession curentSesion = request.getSession();
         String playerName = player.getName();
         String serialNumberOfTheGameSession = player.getValue();
-        curentSesion.setAttribute("playerName",playerName);
-        curentSesion.setAttribute("sessionNumber",serialNumberOfTheGameSession);
+        // заносим в сесию данные о  игроке
+        curenSesion.setAttribute("player",player);
+        curentSesion.setAttribute("playerName",playerName);//имя
+        curentSesion.setAttribute("sessionNumber",serialNumberOfTheGameSession);//кол-во сыгранных игр
+        curentSesion.setAttribute("vin",player.getVin());//сколько выиграл
+        curentSesion.setAttribute("lose",player.getLose());// сколько проиграл
+
         response.sendRedirect("logic");//перенаправляет на сервлет LogicServlet
 
 /*           всё это было  для проверки
@@ -45,5 +56,5 @@ public class LoginServle extends HttpServlet {
         writer.println(htmlRespone);
         */
 
-    }
+     }
 }

@@ -11,7 +11,7 @@
 <head>
     <title>Third</title>
     <link href="static/main.css" rel="stylesheet">
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
 </head>
 <body>

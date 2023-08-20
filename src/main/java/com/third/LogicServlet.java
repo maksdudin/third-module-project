@@ -15,8 +15,8 @@ public class LogicServlet extends HttpServlet {
     @Override
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     HttpSession curentSessiom=request.getSession();
-    Player player;// тут нужно будет добавить метод получения
-    Integer countSession;// и тут нужно будет до Questions questions = new Questions();
+    Player curentPlayer=(Player) curentSessiom.getAttribute("player");
+
         Questions quest =(Questions) curentSessiom.getAttribute("quest");
         if (!quest.getQueue().peek().equals(quest.getMap().get("m"))){
         request.setAttribute("question1",quest.getQueue().poll());
@@ -31,7 +31,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
             String badChoise = quest.getQueue().poll();
             curentSessiom.setAttribute("badChoise",badChoise);
             curentSessiom.setAttribute("resume","And...   you win.");
-            request.getServletContext().getRequestDispatcher("/index2.jsp").forward(request, response);
+            curentPlayer.setVin(1);// изменили значение параметра выигрыш
+            curentPlayer.serMap(curentPlayer);// отдали команду на запись параметров
+            request.getServletContext().getRequestDispatcher("/table3.jsp").forward(request, response);
         }
 
     }

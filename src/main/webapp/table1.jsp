@@ -48,6 +48,10 @@
             Имя в игре: <em>${playerName}</em>
             <br>
             Количество игр: <em>${sessionNumber}</em>
+            <br>
+            выиграл: <em>${vin} раз</em>
+            <br>
+            проиграл: <em>${lose} раз</em>
         </p>
 
         </div>

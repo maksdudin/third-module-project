@@ -1,61 +1,137 @@
 package com.third;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+
+
+
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Player {
-private String name;
-private String value;
-private final Integer count =1;
+    private String name;
+    private String value;
+    private String vin;
+    private String lose;
+    private static Map<String, Object> playerMaps = new HashMap<>();
 
-    public Player(String name) {
+    public Player(String name) throws IOException {
         this.name = name;
-        Properties property = new Properties();
-try(FileInputStream fis = new FileInputStream("F:\\JavaRush\\third module project\\third module project" +
-        "\\src\\main\\resources\\player.properties")){
-    property.load(fis);
-this.value = work(property);
-
-}catch (IOException e)
-{
-    System.out.println("неверный формат записей");
-}
-try(FileOutputStream fout = new FileOutputStream("F:\\JavaRush\\third module project\\third module project\\src\\main" +
-        "\\resources\\player.properties")){
-    property.setProperty(name,value);
-    property.store(fout,null);
-} catch (FileNotFoundException e) {
-    throw new RuntimeException(e);
-} catch (IOException e) {
-    throw new RuntimeException(e);
-}
-
+        this.value = "0";
+        this.vin = "0";
+        this.lose = "0";
+        playerMaps = deserMap();
     }
-    public String work(Properties prop){
-        String value;
-        if (prop.isEmpty()){
-           value=count.toString();
-           return value;
-        }else if(prop.containsKey(name)){
-            try{
-                Integer val =Integer.parseInt(prop.getProperty(name))+count;
-                value=val.toString();
-                return value;
-            }catch (NumberFormatException e){
-                System.out.println("Не верный формат записи значения");
+
+
+    public static Player setPlayer(String playerName) throws IOException {
+        Player player;
+        {
+            player = new Player(playerName);
+
+            if (playerMaps.containsKey(player.name)) {
+            player.setValue();
+            Map<String,Player> playerMap = (Map<String, Player>) playerMaps.get(playerName);
+            player.setVin(String.valueOf(playerMap.get("vin")));
+            player.setLose(String.valueOf(playerMap.get("lose")));
+            } else {
+                putOnTheMap(player);
+                //сериализуем обновлённую карту
+            }
+            return player;
+        }
+    }
+
+        static void serMap(Player p) {
+            putOnTheMap(p);
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("1", playerMaps);
+            System.out.println(jsonObject.toString());
+            //должно писать, если что есть рабочий вариант на PrintWriter
+            try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("F:\\JavaRush\\third module project" +
+                    "\\third module project\\src\\main\\resources\\customer.json"))) {
+                writer.write(jsonObject.toString());
+            } catch (IOException e) {
+
             }
         }
-     return count.toString();
-    }
+
+        private static Map<String, Object> deserMap () {
+            Map jsonMap = new HashMap();
+            File file = new File("F:\\JavaRush\\third module project\\third module project\\src\\main\\resources\\customer.json");
+            try (JsonReader jsReader = Json.createReader(new FileReader(file))) {
+                JsonObject jsObj = jsReader.readObject();
+                String str = jsObj.toString();
+                JSONObject jsonOb = new JSONObject(str);
+                jsonMap = jsonOb.toMap();
+            } catch (IOException e) {
+                System.out.println("что-то не так");
+
+            }
+            Map<String, Object> playerMap = new HashMap<>();
+
+            playerMap = (Map<String, Object>) jsonMap.get("1");
+            return playerMap;
+        }
+
+        public static void putOnTheMap(Player p){
+        playerMaps.put(p.getName(), p);
+        }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getValue() {
         return value;
     }
+    public void setValue() {
+        Integer value1 = Integer.parseInt(getValue());
+        value1++;
+        this.value = value1.toString();
+
+    }
+
+
+    public String getVin() {
+        return vin;
+    }
+    public void setVin (Integer i) {
+        Integer vin1 = Integer.parseInt(getVin());
+        vin1+=i;
+        this.vin = vin1.toString();
+    }
+    public void setVin (String vin) {
+       this.vin = vin;
+    }
+
+
+    public String getLose() {
+        return lose;
+    }
+    public void setLose (Integer i) {
+        Integer lose1 = Integer.parseInt(getLose());
+        lose1+=i;
+        this.lose = lose1.toString();
+
+    }
+    public void setLose (String  lose) {
+
+        this.lose = lose;
+    }
+
+
+
 }
