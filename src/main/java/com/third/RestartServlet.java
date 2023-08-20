@@ -10,7 +10,8 @@ public class RestartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().invalidate();//удаляет из сессии все объекты
-        response.sendRedirect("third_module_project_war/start");//перезапускает сервлет старт
+        response.sendRedirect("start");//перезапускает сервлет старт
+
     }
 }
 //После победы появится кнопка “Start again”. После клика по ней – поле полностью очистится, и игра начнется сначала.

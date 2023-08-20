@@ -15,20 +15,7 @@
     <script src="<c:url value="/static/jquery-3.6.0.min.js"/>"></script>
 </head>
 <body>
-<script>
-    function restart() {
 
-        $.ajax({
-            url: '/restart',
-            type: 'POST',
-            contentType: 'application/json;charset=UTF-8',
-            async: false,
-            success: function () {
-                location.reload(); <!--method reloads the current URL, like the Refresh button. -->
-            }
-        });
-    }
-</script>
 
 <h2>${badChoise}</h2>
 <br>
@@ -42,6 +29,10 @@
 <hr>
 
 
-<button onclick="restart()">Start again</button> <!--кнопка не работает, хотя точно так же в прошлом проекте работала-->
+<form name="" action="restart" method="POST">
+    <input type="submit"  value="Start again">
+
+</form>
+
 </body>
 </html>
