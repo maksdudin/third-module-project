@@ -64,7 +64,7 @@ public class Player {
             }
         }
 
-        private static Map<String, Object> deserMap () {
+        public static Map<String, Object> deserMap() {
             Map jsonMap = new HashMap();
             File file = new File("F:\\JavaRush\\third module project\\third module project\\src\\main\\resources\\customer.json");
             try (JsonReader jsReader = Json.createReader(new FileReader(file))) {
@@ -82,7 +82,11 @@ public class Player {
             return playerMap;
         }
 
-        public static void putOnTheMap(Player p){
+    public static Map<String, Object> getPlayerMaps() {
+        return playerMaps;
+    }
+
+    public static void putOnTheMap(Player p){
         playerMaps.put(p.getName(), p);
         }
 

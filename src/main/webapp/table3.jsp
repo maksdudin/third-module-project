@@ -30,7 +30,8 @@
 
 
 <form name="" action="restart" method="POST">
-    <input type="submit"  value="Start again">
+    <input type="submit"  value="
+">
 
 </form>
 
